@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const models = require('../models/models.js');
  
 /* eslint-disable no-unused-vars */
-const Customer = mongoose.model('customer', models.CustomerSchema);
+const customerContollers = requiere('./customerControllers.js');
 const Department = mongoose.model('department', models.DepartmentSchema);
 const DepartmentGroup = mongoose.model('departmentgroup', models.DepartmentGroupSchema);
 const PaymentType = mongoose.model('paymenttype', models.PaymentTypeSchema);
