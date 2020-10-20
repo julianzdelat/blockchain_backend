@@ -24,7 +24,9 @@
   "homepage": "https://github.com/julianzdelat/blockchain_backend#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "swagger-express-mw-fork": "^0.8.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
