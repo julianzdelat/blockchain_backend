@@ -27,14 +27,14 @@ const customerAddNew = (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({error: err});
+            res.status(404).json({error: err, code:"CU104"});
         });
 }
 
 const customerGetALL = (req, res, next) => {
     Customer.find({}, (err, customers)=> {
         if (err){
-            res.status(404).json({error: "No customers in DB", code:"CU104"});
+            res.status(404).json({error: "No customers in DB", code:"CU105"});
         }else{
             res.status(200).json(customers);
         }
@@ -44,7 +44,7 @@ const customerGetALL = (req, res, next) => {
 const customerGetById = (req, res, next) => {
     Customer.findById(req.body._id, (err, customer)=>{
         if (err){
-            res.status(404).json({error: "No customer with id: "+ req.body._id + " found on DB", code:"CU105"});
+            res.status(404).json({error: "No customer with id: "+ req.body._id + " found on DB", code:"CU106"});
         }else{
             res.status(200).json({customer});
         }
@@ -54,7 +54,7 @@ const customerGetById = (req, res, next) => {
 const customerRemoveById = (req, res, next) => {
     Customer.findByIdAndUpdate(req.body._id, {Status: 'deleted'} ,(err, customer) =>{
         if(err){
-            res.status(404).json({error:"No customer with id: "+ req.body._id + " found on DB", code:"CU105"})
+            res.status(404).json({error:"No customer with id: "+ req.body._id + " found on DB", code:"CU106"})
         }else{
             res.status(200).json({customer});
         }
@@ -78,7 +78,7 @@ const customerUpdateById = (req, res, next) =>{
     }
     Customer.findByIdAndUpdate(req.body._id, {updatedCustomer},(err, customer) => {
         if (err){
-            res.status(404).json({error: "No customer with id: "+ req.body._id + " found on DB", code:"CU105"})
+            res.status(404).json({error: "No customer with id: "+ req.body._id + " found on DB", code:"CU106"})
         }else{
             res.staus(200).json({customer})
         }

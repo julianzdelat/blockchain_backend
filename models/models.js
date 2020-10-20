@@ -31,22 +31,42 @@ const CustomerSchema = new Schema({
 const DepartmentSchema = new Schema({
   Name: String,
   Description: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const DepartmentGroupSchema = new Schema({
   Name: String,
   Description: String,
   Department: DepartmentSchema,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const PaymentTypeSchema = new Schema({
   Name: String,
   Description: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const ItemTypeSchema = new Schema({
   Type: String,
   AgeNeeded: Boolean,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const ItemSchema = new Schema({
@@ -69,6 +89,11 @@ const ItemSchema = new Schema({
   Submerchant: String,
   Barcode: Number,
   LongDescription: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const PaymentSchema = new Schema({
