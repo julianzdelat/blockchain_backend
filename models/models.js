@@ -1,3 +1,5 @@
+//For purpose of refactoring we need to create a model file for each schema
+//lets put this for the 2 sprint
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
