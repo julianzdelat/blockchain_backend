@@ -6,30 +6,49 @@ const { Schema } = mongoose;
 
 const CustomerSchema = new Schema({
   ClientNumber: String,
-  Name: String,
-  LastName: String,
+  Name: {
+    type: String,
+    require: true
+  },
+  LastName: {
+    type: String,
+    require: true
+  },
   Address: String,
   City: String,
   State: String,
   Zipcode: String,
   PhoneHome: String,
-  MobilePhone: String,
+  MobilePhone: {
+    type: String,
+    require: true
+  },
   WorkPhone: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
-    default: 'active',
+    default: 'active'
   },
-  Birthdate: Date,
+  Birthdate: {
+    type: String,
+    require: true
+  },
   Sex: {
     type: String,
     enum: ['M', 'F'],
+    require: true
   },
-  PointsEarned: Number,
+  PointsEarned: {
+    type: Number,
+    require: true
+  },
 });
 
 const DepartmentSchema = new Schema({
-  Name: String,
+  Name: {
+    type: String,
+    require: true
+  },
   Description: String,
   Status: {
     type: String,

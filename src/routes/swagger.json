@@ -13,12 +13,12 @@
    "basePath":"/",
    "tags":[
       {
-         "name":"Users",
-         "description":"API for users in the system"
+         "name":"Customers",
+         "description":"API for Customers in the system"
       },
       {
-         "name":"Customers",
-         "description":"API for customer in the system"
+         "name":"Department",
+         "description":"API for Department in the system"
       }
    ],
    "schemes":[
@@ -31,18 +31,18 @@
       "application/json"
    ],
    "paths":{
-      "/user/{userId}":{
+      "/customer/{customerId}":{
          "get":{
             "tags":[
-               "Users"
+               "Customers"
             ],
-            "summary":"Get user by Id",
-            "operationId":"getPetById",
+            "summary":"Get customer by Id",
+            "operationId":"customerGetById",
             "parameters":[
                {
-                  "name":"userId",
+                  "name":"customerId",
                   "in":"path",
-                  "description":"ID of user to return",
+                  "description":"ID of customer to return",
                   "required":true,
                   "type":"integer",
                   "format":"int64"
@@ -52,26 +52,244 @@
                "200":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/User"
+                     "$ref":"#/definitions/Customer"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Customers"
+            ],
+            "summary":"Delete customer by Id",
+            "operationId":"customerRemoveById",
+            "parameters":[
+               {
+                  "name":"customerId",
+                  "in":"path",
+                  "description":"ID of customer to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Customer"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Customers"
+            ],
+            "summary":"Update a customer",
+            "operationId":"customerUpdateById",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the customer",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Customer"
+                  }
+               },
+               {
+                  "name":"customerId",
+                  "in":"path",
+                  "description":"ID of customer to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Customer"
                   }
                }
             }
          }
       },
-      "/users":{
+      "/customers":{
          "get":{
             "tags":[
-               "Users"
+               "Customers"
             ],
-            "summary":"Get all users in system",
+            "summary":"Get all customers in system",
+            "operationId":"customerGetAll",
             "responses":{
                "200":{
                   "description":"OK",
                   "schema":{
                      "type": "array",
                      "items": {
-                        "$ref": "#/definitions/User"
+                        "$ref": "#/definitions/Customer"
                      }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Customers"
+            ],
+            "summary":"Create customer",
+            "operationId":"customerAddNew",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new customer",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Customer"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Customer"
+                  }
+               }
+            }
+         }
+      },
+      "/deparment/{departmentId}":{
+         "get":{
+            "tags":[
+               "Department"
+            ],
+            "summary":"Get department by Id",
+            "operationId":"departmentGetById",
+            "parameters":[
+               {
+                  "name":"departmentId",
+                  "in":"path",
+                  "description":"ID of department to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Department"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Department"
+            ],
+            "summary":"Delete department by Id",
+            "operationId":"departmentRemoveById",
+            "parameters":[
+               {
+                  "name":"departmentId",
+                  "in":"path",
+                  "description":"ID of department to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Department"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Department"
+            ],
+            "summary":"Update a department",
+            "operationId":"departmentUpdateById",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the department",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Department"
+                  }
+               },
+               {
+                  "name":"departmentId",
+                  "in":"path",
+                  "description":"ID of department to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Department"
+                  }
+               }
+            }
+         }
+      },
+      "/departments":{
+         "get":{
+            "tags":[
+               "Department"
+            ],
+            "summary":"Get all department in system",
+            "operationId":"departmentGetAll",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/Department"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Department"
+            ],
+            "summary":"Create department",
+            "operationId":"departmentAddNew",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new department",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Department"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Department"
                   }
                }
             }
@@ -79,42 +297,84 @@
       }
    },
    "definitions":{
-      "User":{
+      "Customer":{
          "required":[
-            "name",
             "_id",
-            "companies"
+            "name",
+            "lastName",
+            "mobilePhone",
+            "birthdate",
+            "sex",
+            "pointsEarned"
          ],
          "properties":{
             "_id":{
-               "type":"integer",
+               "type":"string",
                "uniqueItems":true
-            },
-            "isPublic":{
-               "type":"boolean"
             },
             "name":{
                "type":"string"
             },
-            "books":{
-               "type":"array",
-               "items":{
-                  "type":"object",
-                  "properties":{
-                     "name":{
-                        "type":"string"
-                     },
-                     "amount":{
-                        "type":"number"
-                     }
-                  }
-               }
+            "lastName":{
+               "type":"string"
             },
-            "companies":{
-               "type":"array",
-               "items":{
-                  "type":"string"
-               }
+            "address":{
+               "type":"string"
+            },
+            "city":{
+               "type":"string"
+            },
+            "state":{
+               "type":"string"
+            },
+            "zipcode":{
+               "type":"string"
+            },
+            "phoneHome":{
+               "type":"string"
+            },
+            "mobilePhone":{
+               "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
+            },
+            "workHome":{
+               "type":"string"
+            },
+            "birthdate":{
+               "type":"string"
+            },
+            "sex":{
+               "type":"string",
+               "enum": ["M", "F"]
+            },
+            "pointsEarned":{
+               "type":"integer"
+            }
+         }
+      },
+      "Department":{
+         "required":[
+            "name"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "name":{
+               "type":"string"
+            },
+            "description":{
+               "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
             }
          }
       }

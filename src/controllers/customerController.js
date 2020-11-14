@@ -2,9 +2,9 @@
 /* eslint-disable no-console */
 const mongoose = require('mongoose');
 
-const CustomerSchema = require('../models/models.js');
+const Schema = require('../models/models.js');
 
-const Customer = mongoose.model('customer', CustomerSchema);
+const Customer = mongoose.model('customer', Schema.CustomerSchema);
 
 const customerAddNew = (req, res) => {
   const customer = new Customer({
@@ -46,9 +46,9 @@ const customerGetAll = (req, res) => {
 };
 
 const customerGetById = (req, res) => {
-  Customer.findById(req.body._id, (err, customer) => {
+  Customer.findById(req.params.customerId, (err, customer) => {
     if (err) {
-      res.status(404).json({ error: `No customer with id: ${req.body._id} found on DB`, code: 'CU105' });
+      res.status(404).json({ error: `No customer with id: ${req.params.customerId}, found on DB`, code: 'CU105' });
     } else {
       res.status(200).json({ customer });
     }
@@ -56,11 +56,11 @@ const customerGetById = (req, res) => {
 };
 
 const customerRemoveById = (req, res) => {
-  Customer.findByIdAndUpdate(req.body._id, { Status: 'deleted' }, (err, customer) => {
+  Customer.findByIdAndUpdate(req.params.customerId, { Status: 'deleted' }, (err, customer) => {
     if (err) {
-      res.status(404).json({ error: `No customer with id: ${req.body._id} found on DB`, code: 'CU105' });
+      res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
     } else {
-      res.status(200).json({ customer });
+      res.status(200).json(customer.Status);
     }
   });
 };
@@ -80,9 +80,9 @@ const customerUpdateById = (req, res) => {
     BirthDate: req.body.birthdate,
     Sex: req.body.sex,
   };
-  Customer.findByIdAndUpdate(req.body._id, { updatedCustomer }, (err, customer) => {
+  Customer.findByIdAndUpdate(req.params.customerId, { updatedCustomer }, (err, customer) => {
     if (err) {
-      res.status(404).json({ error: `No customer with id: ${req.body._id} found on DB`, code: 'CU105' });
+      res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
     } else {
       res.staus(200).json({ customer });
     }
