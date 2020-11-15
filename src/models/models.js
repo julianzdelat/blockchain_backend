@@ -6,47 +6,86 @@ const { Schema } = mongoose;
 
 const CustomerSchema = new Schema({
   ClientNumber: String,
-  Name: String,
-  LastName: String,
+  Name: {
+    type: String,
+    require: true
+  },
+  LastName: {
+    type: String,
+    require: true
+  },
   Address: String,
   City: String,
   State: String,
   Zipcode: String,
   PhoneHome: String,
-  MobilePhone: String,
+  MobilePhone: {
+    type: String,
+    require: true
+  },
   WorkPhone: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active'
+  },
+  Birthdate: {
+    type: String,
+    require: true
+  },
+  Sex: {
+    type: String,
+    enum: ['M', 'F'],
+    require: true
+  },
+  PointsEarned: {
+    type: Number,
+    require: true
+  },
+});
+
+const DepartmentSchema = new Schema({
+  Name: {
+    type: String,
+    require: true
+  },
+  Description: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
     default: 'active',
   },
-  Birthdate: Date,
-  Sex: {
-    type: String,
-    enum: ['M', 'F'],
-  },
-  PointsEarned: Number,
-});
-
-const DepartmentSchema = new Schema({
-  Name: String,
-  Description: String,
 });
 
 const DepartmentGroupSchema = new Schema({
   Name: String,
   Description: String,
   Department: DepartmentSchema,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const PaymentTypeSchema = new Schema({
   Name: String,
   Description: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const ItemTypeSchema = new Schema({
   Type: String,
   AgeNeeded: Boolean,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const ItemSchema = new Schema({
@@ -69,6 +108,11 @@ const ItemSchema = new Schema({
   Submerchant: String,
   Barcode: Number,
   LongDescription: String,
+  Status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active',
+  },
 });
 
 const PaymentSchema = new Schema({
