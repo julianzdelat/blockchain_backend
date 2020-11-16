@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 const mongoose = require('mongoose');
 
 const Schema = require('../models/models.js');
@@ -26,11 +24,9 @@ const customerAddNew = (req, res) => {
   customer
     .save()
     .then((result) => {
-      console.log(result);
       res.status(201).json({ createdCustomer: result });
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({ error: err });
     });
 };
@@ -93,6 +89,6 @@ module.exports = {
   customerAddNew,
   customerGetAll,
   customerGetById,
-  customerRemoveById,
   customerUpdateById,
+  customerRemoveById,
 };

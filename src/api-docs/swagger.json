@@ -37,7 +37,6 @@
                "Customers"
             ],
             "summary":"Get customer by Id",
-            "operationId":"customerGetById",
             "parameters":[
                {
                   "name":"customerId",
@@ -62,7 +61,6 @@
                "Customers"
             ],
             "summary":"Delete customer by Id",
-            "operationId":"customerRemoveById",
             "parameters":[
                {
                   "name":"customerId",
@@ -87,7 +85,6 @@
                "Customers"
             ],
             "summary":"Update a customer",
-            "operationId":"customerUpdateById",
             "parameters":[
                {
                   "in":"body",
@@ -123,7 +120,6 @@
                "Customers"
             ],
             "summary":"Get all customers in system",
-            "operationId":"customerGetAll",
             "responses":{
                "200":{
                   "description":"OK",
@@ -141,7 +137,6 @@
                "Customers"
             ],
             "summary":"Create customer",
-            "operationId":"customerAddNew",
             "parameters":[
                {
                   "in":"body",
@@ -169,7 +164,6 @@
                "Department"
             ],
             "summary":"Get department by Id",
-            "operationId":"departmentGetById",
             "parameters":[
                {
                   "name":"departmentId",
@@ -194,7 +188,6 @@
                "Department"
             ],
             "summary":"Delete department by Id",
-            "operationId":"departmentRemoveById",
             "parameters":[
                {
                   "name":"departmentId",
@@ -219,7 +212,6 @@
                "Department"
             ],
             "summary":"Update a department",
-            "operationId":"departmentUpdateById",
             "parameters":[
                {
                   "in":"body",
@@ -255,7 +247,6 @@
                "Department"
             ],
             "summary":"Get all department in system",
-            "operationId":"departmentGetAll",
             "responses":{
                "200":{
                   "description":"OK",
@@ -273,7 +264,6 @@
                "Department"
             ],
             "summary":"Create department",
-            "operationId":"departmentAddNew",
             "parameters":[
                {
                   "in":"body",
@@ -299,13 +289,11 @@
    "definitions":{
       "Customer":{
          "required":[
-            "_id",
             "name",
             "lastName",
             "mobilePhone",
             "birthdate",
-            "sex",
-            "pointsEarned"
+            "sex"
          ],
          "properties":{
             "_id":{
