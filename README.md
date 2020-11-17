@@ -15,5 +15,5 @@ npm start
 ### Verify that the eslint rules are been following
 
 ```
-npm run eslint
+npm eslint
 ```
