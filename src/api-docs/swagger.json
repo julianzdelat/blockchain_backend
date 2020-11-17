@@ -19,6 +19,10 @@
       {
          "name":"Department",
          "description":"API for Department in the system"
+      },
+      {
+         "name":"ItemType",
+         "description":"API for ItemType in the system"
       }
    ],
    "schemes":[
@@ -284,6 +288,133 @@
                }
             }
          }
+      },
+      "/itemType/{itemTypeId}":{
+         "get":{
+            "tags":[
+               "ItemType"
+            ],
+            "summary":"Get item type by Id",
+            "parameters":[
+               {
+                  "name":"itemTypeId",
+                  "in":"path",
+                  "description":"ID of item type to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "ItemType"
+            ],
+            "summary":"Delete item type by Id",
+            "parameters":[
+               {
+                  "name":"itemTypeId",
+                  "in":"path",
+                  "description":"ID of item type to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "ItemType"
+            ],
+            "summary":"Update a item type",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the item type",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               },
+               {
+                  "name":"itemTypeId",
+                  "in":"path",
+                  "description":"ID of item type to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            }
+         }
+      },
+      "/itemTypes":{
+         "get":{
+            "tags":[
+               "ItemType"
+            ],
+            "summary":"Get all item type in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/ItemType"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "ItemType"
+            ],
+            "summary":"Create item type",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new item type",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            }
+         }
       }
    },
    "definitions":{
@@ -358,6 +489,29 @@
             },
             "description":{
                "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
+            }
+         }
+      },
+      "ItemType":{
+         "required":[
+            "typeName",
+            "isAgeNeeded"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "typeName":{
+               "type":"string"
+            },
+            "isAgeNeeded":{
+               "type":"boolean"
             },
             "status":{
                "type":"string",

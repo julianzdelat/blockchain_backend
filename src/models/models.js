@@ -8,11 +8,11 @@ const CustomerSchema = new Schema({
   ClientNumber: String,
   Name: {
     type: String,
-    require: true
+    require: true,
   },
   LastName: {
     type: String,
-    require: true
+    require: true,
   },
   Address: String,
   City: String,
@@ -21,33 +21,33 @@ const CustomerSchema = new Schema({
   PhoneHome: String,
   MobilePhone: {
     type: String,
-    require: true
+    require: true,
   },
   WorkPhone: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
-    default: 'active'
+    default: 'active',
   },
   Birthdate: {
     type: String,
-    require: true
+    require: true,
   },
   Sex: {
     type: String,
     enum: ['M', 'F'],
-    require: true
+    require: true,
   },
   PointsEarned: {
     type: Number,
-    require: true
+    require: true,
   },
 });
 
 const DepartmentSchema = new Schema({
   Name: {
     type: String,
-    require: true
+    require: true,
   },
   Description: String,
   Status: {
@@ -79,8 +79,11 @@ const PaymentTypeSchema = new Schema({
 });
 
 const ItemTypeSchema = new Schema({
-  Type: String,
-  AgeNeeded: Boolean,
+  TypeName: {
+    type: String,
+    require: true,
+  },
+  IsAgeNeeded: Boolean,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
