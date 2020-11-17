@@ -51,16 +51,6 @@ const customerGetById = (req, res) => {
   });
 };
 
-const customerRemoveById = (req, res) => {
-  Customer.findByIdAndUpdate(req.params.customerId, { Status: 'deleted' }, (err, customer) => {
-    if (err) {
-      res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
-    } else {
-      res.status(200).json(customer.Status);
-    }
-  });
-};
-
 const customerUpdateById = (req, res) => {
   const updatedCustomer = {
     ClientNumber: req.body.clientnumber,
@@ -81,6 +71,16 @@ const customerUpdateById = (req, res) => {
       res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
     } else {
       res.staus(200).json({ customer });
+    }
+  });
+};
+
+const customerRemoveById = (req, res) => {
+  Customer.findByIdAndUpdate(req.params.customerId, { Status: 'deleted' }, (err, customer) => {
+    if (err) {
+      res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
+    } else {
+      res.status(200).json(customer.Status);
     }
   });
 };
