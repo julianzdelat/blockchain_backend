@@ -1,7 +1,7 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
-const bodyParser = require('body-parser');
 
 const swaggerDocument = require('./src/api-docs/swagger');
 const Routes = require('./src/routes/Routes');

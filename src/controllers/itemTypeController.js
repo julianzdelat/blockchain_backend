@@ -7,7 +7,7 @@ const ItemType = mongoose.model('itemType', Schema.ItemTypeSchema);
 const itemTypeAddNew = (req, res) => {
   const itemType = new ItemType({
     TypeName: req.body.typeName,
-    AgeNeeded: req.body.ageNeeded,
+    IsAgeNeeded: req.body.isAgeNeeded,
   });
   itemType
     .save()
@@ -42,7 +42,7 @@ const itemTypeGetById = (req, res) => {
 const itemTypeUpdateById = (req, res) => {
   const updatedItemType = {
     TypeName: req.body.typeName,
-    AgeNeeded: req.body.ageNeeded,
+    IsAgeNeeded: req.body.isAgeNeeded,
   };
   ItemType.findByIdAndUpdate(req.params.itemTypeId, { updatedItemType }, (err, itemType) => {
     if (err) {
