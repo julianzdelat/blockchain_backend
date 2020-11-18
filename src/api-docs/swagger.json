@@ -21,6 +21,10 @@
          "description":"API for Department in the system"
       },
       {
+         "name":"Item",
+         "description":"API for Item in the system"
+      },
+      {
          "name":"ItemType",
          "description":"API for ItemType in the system"
       }
@@ -129,7 +133,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "items": {
+                     "item": {
                         "$ref": "#/definitions/Customer"
                      }
                   }
@@ -256,7 +260,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "items": {
+                     "item": {
                         "$ref": "#/definitions/Department"
                      }
                   }
@@ -284,6 +288,133 @@
                   "description":"OK",
                   "schema":{
                      "$ref":"#/definitions/Department"
+                  }
+               }
+            }
+         }
+      }, 
+      "/item/{itemId}":{
+         "get":{
+            "tags":[
+               "Item"
+            ],
+            "summary":"Get item by Id",
+            "parameters":[
+               {
+                  "name":"itemID",
+                  "in":"path",
+                  "description":"ID of item to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Item"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Item"
+            ],
+            "summary":"Delete item by Id",
+            "parameters":[
+               {
+                  "name":"itemId",
+                  "in":"path",
+                  "description":"ID of item to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/ItemType"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Item"
+            ],
+            "summary":"Update a item",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the item",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Item"
+                  }
+               },
+               {
+                  "name":"itemId",
+                  "in":"path",
+                  "description":"ID of item to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Item"
+                  }
+               }
+            }
+         }
+      },
+      "/items":{
+         "get":{
+            "tags":[
+               "Item"
+            ],
+            "summary":"Get all item in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "item": {
+                        "$ref": "#/definitions/Item"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Item"
+            ],
+            "summary":"Create item",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new item",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Item"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Item"
                   }
                }
             }
@@ -383,7 +514,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "items": {
+                     "item": {
                         "$ref": "#/definitions/ItemType"
                      }
                   }
@@ -495,6 +626,83 @@
                "enum":["active", "deleted"],
                "default": "active"
             }
+         }
+      },
+      "Item":{
+         "required":[
+            "shortDescription",
+            "unitPrice",
+            "itemType",
+            "deparment",
+            "barcode",
+            "itemCost",
+            "authorizedSale"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "shortDescription":{
+               "type":"string"
+            },
+            "unitPrice":{
+               "type":"float"
+            },
+            "specialPrice":{
+               "type":"float"
+            },
+            "offerQuantity":{
+               "type":"integer"
+            },
+            "itemType":{
+               "type":"itemTypeSchema"
+            },
+            "department":{
+               "type":"departmentSchema"
+            },
+            "weightable":{
+               "type":"boolean"
+            },
+            "priceRequired":{
+               "type":"boolean"
+            },
+            "inventory":{
+               "type":"integer"
+            },
+            "allowFoodstamps":{
+               "type":"boolean"
+            },
+            "quantityAllowed":{
+               "type":"integer"
+            },
+            "authorizedSale":{
+               "type":"boolean"
+            },
+            "allowPoints":{
+               "type":"boolean"
+            },
+            "itemCost":{
+               "type":"float"
+            },
+            "merchant":{
+               "type":"string"
+            },
+            "submerchabt":{
+               "type":"string"
+            },
+            "barcode":{
+               "type":"integer"
+            },
+            "longDescription":{
+               "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
+            }
+            
          }
       },
       "ItemType":{
