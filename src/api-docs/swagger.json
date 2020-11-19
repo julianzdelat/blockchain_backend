@@ -13,7 +13,7 @@
    "basePath":"/",
    "tags":[
       {
-         "name":"Customer",
+         "name":"Customers",
          "description":"API for Customers in the system"
       },
       {
@@ -46,7 +46,7 @@
       "/customer/{customerId}":{
          "get":{
             "tags":[
-               "Customer"
+               "Customers"
             ],
             "summary":"Get customer by Id",
             "parameters":[
@@ -70,7 +70,7 @@
          },
          "delete":{
             "tags":[
-               "Customer"
+               "Customers"
             ],
             "summary":"Delete customer by Id",
             "parameters":[
@@ -94,7 +94,7 @@
          },
          "put":{
             "tags":[
-               "Customer"
+               "Customers"
             ],
             "summary":"Update a customer",
             "parameters":[
@@ -129,7 +129,7 @@
       "/customers":{
          "get":{
             "tags":[
-               "Customer"
+               "Customers"
             ],
             "summary":"Get all customers in system",
             "responses":{
@@ -137,7 +137,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "item": {
+                     "items": {
                         "$ref": "#/definitions/Customer"
                      }
                   }
@@ -146,7 +146,7 @@
          },
          "post":{
             "tags":[
-               "Customer"
+               "Customers"
             ],
             "summary":"Create customer",
             "parameters":[
@@ -264,7 +264,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "item": {
+                     "items": {
                         "$ref": "#/definitions/Department"
                      }
                   }
@@ -341,7 +341,7 @@
                "200":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/ItemType"
+                     "$ref":"#/definitions/Item"
                   }
                }
             }
@@ -391,7 +391,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "item": {
+                     "items": {
                         "$ref": "#/definitions/Item"
                      }
                   }
@@ -518,7 +518,7 @@
                   "description":"OK",
                   "schema":{
                      "type": "array",
-                     "item": {
+                     "items": {
                         "$ref": "#/definitions/ItemType"
                      }
                   }
