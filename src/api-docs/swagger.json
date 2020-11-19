@@ -13,7 +13,7 @@
    "basePath":"/",
    "tags":[
       {
-         "name":"Customers",
+         "name":"Customer",
          "description":"API for Customers in the system"
       },
       {
@@ -23,6 +23,10 @@
       {
          "name":"ItemType",
          "description":"API for ItemType in the system"
+      },
+      {
+         "name":"Payment",
+         "description":"API for Payment in the system"
       }
    ],
    "schemes":[
@@ -38,7 +42,7 @@
       "/customer/{customerId}":{
          "get":{
             "tags":[
-               "Customers"
+               "Customer"
             ],
             "summary":"Get customer by Id",
             "parameters":[
@@ -62,7 +66,7 @@
          },
          "delete":{
             "tags":[
-               "Customers"
+               "Customer"
             ],
             "summary":"Delete customer by Id",
             "parameters":[
@@ -86,7 +90,7 @@
          },
          "put":{
             "tags":[
-               "Customers"
+               "Customer"
             ],
             "summary":"Update a customer",
             "parameters":[
@@ -121,7 +125,7 @@
       "/customers":{
          "get":{
             "tags":[
-               "Customers"
+               "Customer"
             ],
             "summary":"Get all customers in system",
             "responses":{
@@ -138,7 +142,7 @@
          },
          "post":{
             "tags":[
-               "Customers"
+               "Customer"
             ],
             "summary":"Create customer",
             "parameters":[
@@ -415,6 +419,133 @@
                }
             }
          }
+      },
+      "/payment/{paymentId}":{
+         "get":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Get payment by Id",
+            "parameters":[
+               {
+                  "name":"itemTypeId",
+                  "in":"path",
+                  "description":"ID of payment to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Delete payment by Id",
+            "parameters":[
+               {
+                  "name":"paymentId",
+                  "in":"path",
+                  "description":"ID of item type to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Update a payment",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the payment",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               },
+               {
+                  "name":"paymentId",
+                  "in":"path",
+                  "description":"ID of payment to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            }
+         }
+      },
+      "/payment":{
+         "get":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Get all payments in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/Payment"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Create payment",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new payment",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            }
+         }
       }
    },
    "definitions":{
@@ -517,6 +648,32 @@
                "type":"string",
                "enum":["active", "deleted"],
                "default": "active"
+            }
+         }
+      },
+      "Payment":{
+         "required":[
+
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "paymentNumber":{
+               "type":"integer",
+               "uniqueItems":true
+            },
+            "paymentType":{
+               "type":"paymentTypeSchema"
+            },
+            "amount":{
+               "type":"float"
+            },
+            "status":{
+               "type":"string",
+               "enum": ["completed", "pending", "canceled"],
+               "default": "pending"
             }
          }
       }
