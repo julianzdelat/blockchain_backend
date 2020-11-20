@@ -31,6 +31,10 @@
       {
          "name":"Payment",
          "description":"API for Payment in the system"
+      },
+      {
+         "name":"DepartmentGroup",
+         "description":"API for DepartmentGroup in the system"
       }
    ],
    "schemes":[
@@ -677,6 +681,133 @@
                }
             }
          }
+      },
+      "/deparmentGroup/{departmentGroupId}":{
+         "get":{
+            "tags":[
+               "DepartmentGroup"
+            ],
+            "summary":"Get departmentGroup by Id",
+            "parameters":[
+               {
+                  "name":"departmentGroupId",
+                  "in":"path",
+                  "description":"ID of departmentGroup to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "DepartmentGroup"
+            ],
+            "summary":"Delete departmentGroup by Id",
+            "parameters":[
+               {
+                  "name":"departmentGroupId",
+                  "in":"path",
+                  "description":"ID of departmentGroup to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "DepartmentGroup"
+            ],
+            "summary":"Update a departmentGroup",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the departmentGroup",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               },
+               {
+                  "name":"departmentGroupId",
+                  "in":"path",
+                  "description":"ID of departmentGroup to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               }
+            }
+         }
+      },
+      "/departmentGroups":{
+         "get":{
+            "tags":[
+               "DepartmentGroup"
+            ],
+            "summary":"Get all departmentGroup in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/DepartmentGroup"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "DepartmentGroup"
+            ],
+            "summary":"Create departmentGroup",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new departmentGroup",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/DepartmentGroup"
+                  }
+               }
+            }
+         }
       }
    },
    "definitions":{
@@ -882,6 +1013,31 @@
                "type":"string",
                "enum": ["completed", "pending", "canceled"],
                "default": "pending"
+            }
+         }
+      },
+      "DepartmentGroup":{
+         "required":[
+            "name"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "name":{
+               "type":"string"
+            },
+            "description":{
+               "type":"string"
+            },
+            "department":{
+               "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
             }
          }
       }

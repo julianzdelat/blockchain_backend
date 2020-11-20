@@ -42,15 +42,14 @@ const departmentGetById = (req, res) => {
 
 const departmentUpdateById = (req, res) => {
   // Why are your defining an updated customer here?
-  const updatedCustomer = {
+  const updatedDepartment = {
     Name: req.body.name,
     Description: req.body.description,
   };
-  Department.findByIdAndUpdate(req.params.departmentId, { updatedCustomer }, (err, department) => {
+  Department.findByIdAndUpdate(req.params.departmentId, { updatedDepartment }, (err, department) => {
     if (err) {
       res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
     } else {
-      // I guess you were trying to return the department, were not you?
       res.staus(200).json({ department });
     }
   });
