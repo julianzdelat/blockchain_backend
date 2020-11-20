@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = require('../models/models.js');
 
-const item = mongoose.model('item', Schema.ItemSchema);
+const Item = mongoose.model('item', Schema.ItemSchema);
 
 const itemAddNew = (req, res) => {
-  const item = new item({
+  const item = new Item({
     ShortDescription: req.body.shortdescription,
     UnitPrice: req.body.unitprice,
     SpecialPrice: req.body.lastname,
@@ -15,11 +15,11 @@ const itemAddNew = (req, res) => {
     Wieghtable: req.body.weightable,
     PriceRequired: req.body.pricerequired,
     Inventory: req.body.inventory,
-    AllowFoodStamps: req.body.allowfoodstamps, 
+    AllowFoodStamps: req.body.allowfoodstamps,
     QuantityAllowed: req.body.quantityallowed,
     QuantityRequired: req.body.quantityrequired,
     AuthorizedSale: req.body.authorizedsale,
-    AllowPoints: req.body.allowpoints, 
+    AllowPoints: req.body.allowpoints,
     ItemCost: req.body.itemcost,
     Merchant: req.body.merchant,
     Submerchant: req.body.submerchant,
@@ -68,11 +68,11 @@ const itemUpdateById = (req, res) => {
     Wieghtable: req.body.weightable,
     PriceRequired: req.body.pricerequired,
     Inventory: req.body.inventory,
-    AllowFoodStamps: req.body.allowfoodstamps, 
+    AllowFoodStamps: req.body.allowfoodstamps,
     QuantityAllowed: req.body.quantityallowed,
     QuantityRequired: req.body.quantityrequired,
     AuthorizedSale: req.body.authorizedsale,
-    AllowPoints: req.body.allowpoints, 
+    AllowPoints: req.body.allowpoints,
     ItemCost: req.body.itemcost,
     Merchant: req.body.merchant,
     Submerchant: req.body.submerchant,
@@ -89,7 +89,7 @@ const itemUpdateById = (req, res) => {
 };
 
 const itemRemoveById = (req, res) => {
-  item.findByIdAndUpdate(req.params.itemId, { Status: 'deleted' }, (err, item) => {
+  Item.findByIdAndUpdate(req.params.itemId, { Status: 'deleted' }, (err, item) => {
     if (err) {
       res.status(404).json({ error: `No item with id: ${req.params.itemId} found on DB`, code: 'IT105' });
     } else {
