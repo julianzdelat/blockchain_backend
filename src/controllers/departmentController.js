@@ -16,7 +16,7 @@ const departmentAddNew = (req, res) => {
       res.status(201).json({ createdDepartment: result });
     })
     .catch((err) => {
-      res.status(404).json({ error: err, code: 'DE104' }); // Is it correct the error code???
+      res.status(404).json({ error: err, code: 'DE104' });
     });
 };
 
@@ -46,19 +46,20 @@ const departmentUpdateById = (req, res) => {
     Name: req.body.name,
     Description: req.body.description,
   };
-  Department.findByIdAndUpdate(req.params.departmentId, { updatedDepartment }, (err, department) => {
-    if (err) {
-      res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
-    } else {
-      res.staus(200).json({ department });
-    }
-  });
+  Department.findByIdAndUpdate(req.params.departmentId, { updatedDepartment },
+    (err, department) => {
+      if (err) {
+        res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
+      } else {
+        res.staus(200).json({ department });
+      }
+    });
 };
 
 const departmentRemoveById = (req, res) => {
   Department.findByIdAndUpdate(req.params.departmentId, { Status: 'deleted' }, (err, department) => {
     if (err) {
-      res.status(404).json({ error: `No customer with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
+      res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
     } else {
       res.status(200).json(department.Status);
     }
