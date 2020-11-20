@@ -21,6 +21,10 @@
          "description":"API for Department in the system"
       },
       {
+         "name":"DepartmentGroup",
+         "description":"API for DepartmentGroup in the system"
+      },
+      {
          "name":"Item",
          "description":"API for Item in the system"
       },
@@ -31,10 +35,6 @@
       {
          "name":"Payment",
          "description":"API for Payment in the system"
-      },
-      {
-         "name":"DepartmentGroup",
-         "description":"API for DepartmentGroup in the system"
       }
    ],
    "schemes":[
@@ -638,7 +638,7 @@
             }
          }
       },
-      "/payment":{
+      "/payments":{
          "get":{
             "tags":[
                "Payment"
@@ -969,7 +969,7 @@
       },
       "ItemType":{
          "required":[
-            "typeName",
+            "name",
             "isAgeNeeded"
          ],
          "properties":{
@@ -977,7 +977,7 @@
                "type":"string",
                "uniqueItems":true
             },
-            "typeName":{
+            "name":{
                "type":"string"
             },
             "isAgeNeeded":{
