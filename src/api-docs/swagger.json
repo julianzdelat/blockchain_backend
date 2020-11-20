@@ -31,6 +31,10 @@
       {
          "name":"Payment",
          "description":"API for Payment in the system"
+      },
+      {
+         "name":"PaymentType",
+         "description":"API for PaymentType in the system"
       }
    ],
    "schemes":[
@@ -634,7 +638,7 @@
             }
          }
       },
-      "/payment":{
+      "/payments":{
          "get":{
             "tags":[
                "Payment"
@@ -673,6 +677,133 @@
                   "description":"OK",
                   "schema":{
                      "$ref":"#/definitions/Payment"
+                  }
+               }
+            }
+         }
+      },
+      "/paymentType/{paymentTypeId}":{
+         "get":{
+            "tags":[
+               "PaymentType"
+            ],
+            "summary":"Get payment type by Id",
+            "parameters":[
+               {
+                  "name":"paymentTypeId",
+                  "in":"path",
+                  "description":"ID of payment type to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "PaymentType"
+            ],
+            "summary":"Delete payment type by Id",
+            "parameters":[
+               {
+                  "name":"paymentTypeId",
+                  "in":"path",
+                  "description":"ID of payment type to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "PaymentType"
+            ],
+            "summary":"Update a payment type",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the payment type",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
+                  }
+               },
+               {
+                  "name":"paymentTypeId",
+                  "in":"path",
+                  "description":"ID of payment type to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
+                  }
+               }
+            }
+         }
+      },
+      "/paymentTypes":{
+         "get":{
+            "tags":[
+               "PaymentType"
+            ],
+            "summary":"Get all payemnt type in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/PaymentType"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "PaymentType"
+            ],
+            "summary":"Create payment type",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new payment type",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/PaymentType"
                   }
                }
             }
@@ -838,7 +969,7 @@
       },
       "ItemType":{
          "required":[
-            "typeName",
+            "name",
             "isAgeNeeded"
          ],
          "properties":{
@@ -846,7 +977,7 @@
                "type":"string",
                "uniqueItems":true
             },
-            "typeName":{
+            "name":{
                "type":"string"
             },
             "isAgeNeeded":{
@@ -882,6 +1013,28 @@
                "type":"string",
                "enum": ["completed", "pending", "canceled"],
                "default": "pending"
+            }
+         }
+      },
+      "PaymentType":{
+         "required":[
+            "name"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "name":{
+               "type":"string"
+            },
+            "description":{
+               "type":"string"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
             }
          }
       }

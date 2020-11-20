@@ -6,7 +6,7 @@ const {
   itemTypeRemoveById,
 } = require('../controllers/itemTypeController');
 
-const customerRoutes = (app) => {
+const itemTypeRoutes = (app) => {
   app.route('/itemTypes')
     .post(itemTypeAddNew)
     .get(itemTypeGetAll);
@@ -16,4 +16,4 @@ const customerRoutes = (app) => {
     .delete(itemTypeRemoveById);
 };
 
-module.exports = customerRoutes;
+module.exports = itemTypeRoutes;

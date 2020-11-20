@@ -10,7 +10,7 @@ const paymentAddNew = (req, res) => {
     PaymentType: req.body.paymentype,
     Amount: req.body.amount,
     Status: 'pending',
-    });
+  });
   payment
     .save()
     .then((result) => {

@@ -79,7 +79,7 @@ const PaymentTypeSchema = new Schema({
 });
 
 const ItemTypeSchema = new Schema({
-  TypeName: {
+  Name: {
     type: String,
     require: true,
   },
