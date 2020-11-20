@@ -21,6 +21,10 @@
          "description":"API for Department in the system"
       },
       {
+         "name":"DepartmentGroup",
+         "description":"API for DepartmentGroup in the system"
+      },
+      {
          "name":"Item",
          "description":"API for Item in the system"
       },
@@ -31,10 +35,6 @@
       {
          "name":"Payment",
          "description":"API for Payment in the system"
-      },
-      {
-         "name":"PaymentType",
-         "description":"API for PaymentType in the system"
       }
    ],
    "schemes":[
@@ -682,17 +682,17 @@
             }
          }
       },
-      "/paymentType/{paymentTypeId}":{
+      "/deparmentGroup/{departmentGroupId}":{
          "get":{
             "tags":[
-               "PaymentType"
+               "DepartmentGroup"
             ],
-            "summary":"Get payment type by Id",
+            "summary":"Get departmentGroup by Id",
             "parameters":[
                {
-                  "name":"paymentTypeId",
+                  "name":"departmentGroupId",
                   "in":"path",
-                  "description":"ID of payment type to return",
+                  "description":"ID of departmentGroup to return",
                   "required":true,
                   "type":"integer",
                   "format":"int64"
@@ -702,21 +702,21 @@
                "200":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                }
             }
          },
          "delete":{
             "tags":[
-               "PaymentType"
+               "DepartmentGroup"
             ],
-            "summary":"Delete payment type by Id",
+            "summary":"Delete departmentGroup by Id",
             "parameters":[
                {
-                  "name":"paymentTypeId",
+                  "name":"departmentGroupId",
                   "in":"path",
-                  "description":"ID of payment type to delete",
+                  "description":"ID of departmentGroup to delete",
                   "required":true,
                   "type":"integer",
                   "format":"int64"
@@ -726,30 +726,30 @@
                "200":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                }
             }
          },
          "put":{
             "tags":[
-               "PaymentType"
+               "DepartmentGroup"
             ],
-            "summary":"Update a payment type",
+            "summary":"Update a departmentGroup",
             "parameters":[
                {
                   "in":"body",
                   "name":"body",
-                  "description":"All modified data from the payment type",
+                  "description":"All modified data from the departmentGroup",
                   "required":true,
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                },
                {
-                  "name":"paymentTypeId",
+                  "name":"departmentGroupId",
                   "in":"path",
-                  "description":"ID of payment type to delete",
+                  "description":"ID of departmentGroup to delete",
                   "required":true,
                   "type":"integer",
                   "format":"int64"
@@ -759,25 +759,25 @@
                "200":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                }
             }
          }
       },
-      "/paymentTypes":{
+      "/departmentGroups":{
          "get":{
             "tags":[
-               "PaymentType"
+               "DepartmentGroup"
             ],
-            "summary":"Get all payemnt type in system",
+            "summary":"Get all departmentGroup in system",
             "responses":{
                "200":{
                   "description":"OK",
                   "schema":{
                      "type": "array",
                      "items": {
-                        "$ref": "#/definitions/PaymentType"
+                        "$ref": "#/definitions/DepartmentGroup"
                      }
                   }
                }
@@ -785,17 +785,17 @@
          },
          "post":{
             "tags":[
-               "PaymentType"
+               "DepartmentGroup"
             ],
-            "summary":"Create payment type",
+            "summary":"Create departmentGroup",
             "parameters":[
                {
                   "in":"body",
                   "name":"body",
-                  "description":"All required data to create a new payment type",
+                  "description":"All required data to create a new departmentGroup",
                   "required":true,
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                }
             ],
@@ -803,7 +803,7 @@
                "201":{
                   "description":"OK",
                   "schema":{
-                     "$ref":"#/definitions/PaymentType"
+                     "$ref":"#/definitions/DepartmentGroup"
                   }
                }
             }
@@ -1016,7 +1016,7 @@
             }
          }
       },
-      "PaymentType":{
+      "DepartmentGroup":{
          "required":[
             "name"
          ],
@@ -1029,6 +1029,9 @@
                "type":"string"
             },
             "description":{
+               "type":"string"
+            },
+            "department":{
                "type":"string"
             },
             "status":{
