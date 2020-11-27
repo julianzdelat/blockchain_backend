@@ -6,8 +6,8 @@ const Payment = mongoose.model('payment', Schema.PaymentSchema);
 
 const paymentAddNew = (req, res) => {
   const payment = new Payment({
-    PaymentNumber: req.body.paymenttype,
-    PaymentType: req.body.paymentype,
+    PaymentNumber: req.body.paymentNumber,
+    PaymentTypeId: req.body.paymentTypeId,
     Amount: req.body.amount,
     Status: 'pending',
   });
@@ -43,25 +43,25 @@ const paymentGetById = (req, res) => {
 
 const paymentUpdateById = (req, res) => {
   const updatedPayment = {
-    PaymentNumber: req.body.paymenttype,
-    PaymentType: req.body.paymentype,
+    PaymentNumber: req.body.paymentNumber,
+    PaymentType: req.body.paymentTypeId,
     Amount: req.body.amount,
   };
   Payment.findByIdAndUpdate(req.params.paymentId, { updatedPayment }, (err, payment) => {
     if (err) {
       res.status(404).json({ error: `No payment with id: ${req.params.paymentId} found on DB`, code: 'PA105' });
     } else {
-      res.staus(200).json({ payment });
+      res.status(200).json({ payment });
     }
   });
 };
 
 const paymentRemoveById = (req, res) => {
-  Payment.findByIdAndUpdate(req.params.paymentId, { Status: 'deleted' }, (err, payment) => {
+  Payment.findByIdAndUpdate(req.params.paymentId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No payment with id: ${req.params.paymentId} found on DB`, code: 'PA105' });
     } else {
-      res.status(200).json(payment.Status);
+      res.status(200).json();
     }
   });
 };

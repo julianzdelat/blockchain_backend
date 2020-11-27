@@ -49,17 +49,17 @@ const paymentTypeUpdateById = (req, res) => {
       if (err) {
         res.status(404).json({ error: `No payment type with id: ${req.params.paymentTypeId} found on DB`, code: 'PT105' });
       } else {
-        res.staus(200).json({ paymentType });
+        res.status(200).json({ paymentType });
       }
     });
 };
 
 const paymentTypeRemoveById = (req, res) => {
-  PaymentType.findByIdAndUpdate(req.params.paymentTypeId, { Status: 'deleted' }, (err, paymentType) => {
+  PaymentType.findByIdAndUpdate(req.params.paymentTypeId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No payment type with id: ${req.params.paymentTypeId} found on DB`, code: 'PT105' });
     } else {
-      res.status(200).json(paymentType.Status);
+      res.status(200).json();
     }
   });
 };

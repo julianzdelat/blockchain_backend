@@ -8,7 +8,7 @@ const departmentGroupAddNew = (req, res) => {
   const departmentGroup = new DepartmentGroup({
     Name: req.body.name,
     Description: req.body.description,
-    Department: req.body.department,
+    DepartmentId: req.body.departmentId,
     Status: 'active',
   });
   departmentGroup
@@ -44,25 +44,25 @@ const departmentGroupGetById = (req, res) => {
 const departmentGroupUpdateById = (req, res) => {
   const updatedDepartmentGroup = {
     Name: req.body.name,
-    Department: req.body.departmentGroup,
     Description: req.body.description,
+    DepartmentId: req.body.departmentId,
   };
   DepartmentGroup.findByIdAndUpdate(req.params.departmentGroupId, { updatedDepartmentGroup },
     (err, departmentGroup) => {
       if (err) {
         res.status(404).json({ error: `No department group with id: ${req.params.departmentGroupId} found on DB`, code: 'DG105' });
       } else {
-        res.staus(200).json({ departmentGroup });
+        res.status(200).json({ departmentGroup });
       }
     });
 };
 
 const departmentGroupRemoveById = (req, res) => {
-  DepartmentGroup.findByIdAndUpdate(req.params.departmentGroupId, { Status: 'deleted' }, (err, departmentGroup) => {
+  DepartmentGroup.findByIdAndUpdate(req.params.departmentGroupId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No department group with id: ${req.params.departmentGroupId} found on DB`, code: 'DG105' });
     } else {
-      res.status(200).json(departmentGroup.Status);
+      res.status(200).json();
     }
   });
 };

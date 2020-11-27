@@ -6,25 +6,25 @@ const Item = mongoose.model('item', Schema.ItemSchema);
 
 const itemAddNew = (req, res) => {
   const item = new Item({
-    ShortDescription: req.body.shortdescription,
-    UnitPrice: req.body.unitprice,
-    SpecialPrice: req.body.lastname,
-    OfferQuantity: req.body.offerquantity,
-    ItemType: req.body.itemtype,
-    Department: req.body.department,
+    ShortDescription: req.body.shortDescription,
+    UnitPrice: req.body.unitPrice,
+    SpecialPrice: req.body.specialPrice,
+    OfferQuantity: req.body.offerQuantity,
+    ItemTypeId: req.body.itemTypeId,
+    DepartmentId: req.body.departmentId,
     Wieghtable: req.body.weightable,
-    PriceRequired: req.body.pricerequired,
+    PriceRequired: req.body.priceRequired,
     Inventory: req.body.inventory,
-    AllowFoodStamps: req.body.allowfoodstamps,
-    QuantityAllowed: req.body.quantityallowed,
+    AllowFoodStamps: req.body.allowFoodstamps,
+    QuantityAllowed: req.body.quantityAllowed,
     QuantityRequired: req.body.quantityrequired,
-    AuthorizedSale: req.body.authorizedsale,
-    AllowPoints: req.body.allowpoints,
-    ItemCost: req.body.itemcost,
+    AuthorizedSale: req.body.authorizedSale,
+    AllowPoints: req.body.allowPoints,
+    ItemCost: req.body.itemCost,
     Merchant: req.body.merchant,
     Submerchant: req.body.submerchant,
     Barcode: req.body.barcode,
-    LongDescription: req.body.longdescription,
+    LongDescription: req.body.longDescription,
     Status: 'active',
   });
   item
@@ -63,8 +63,8 @@ const itemUpdateById = (req, res) => {
     UnitPrice: req.body.unitprice,
     SpecialPrice: req.body.lastname,
     OfferQuantity: req.body.offerquantity,
-    ItemType: req.body.itemtype,
-    Department: req.body.department,
+    ItemTypeId: req.body.itemtypeId,
+    DepartmentId: req.body.departmentId,
     Wieghtable: req.body.weightable,
     PriceRequired: req.body.pricerequired,
     Inventory: req.body.inventory,
@@ -83,17 +83,17 @@ const itemUpdateById = (req, res) => {
     if (err) {
       res.status(404).json({ error: `No item with id: ${req.params.itemId} found on DB`, code: 'IT105' });
     } else {
-      res.staus(200).json({ item });
+      res.status(200).json({ item });
     }
   });
 };
 
 const itemRemoveById = (req, res) => {
-  Item.findByIdAndUpdate(req.params.itemId, { Status: 'deleted' }, (err, item) => {
+  Item.findByIdAndUpdate(req.params.itemId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No item with id: ${req.params.itemId} found on DB`, code: 'IT105' });
     } else {
-      res.status(200).json(item.Status);
+      res.status(200).json();
     }
   });
 };

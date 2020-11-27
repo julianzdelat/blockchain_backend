@@ -51,17 +51,17 @@ const departmentUpdateById = (req, res) => {
       if (err) {
         res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
       } else {
-        res.staus(200).json({ department });
+        res.status(200).json({ department });
       }
     });
 };
 
 const departmentRemoveById = (req, res) => {
-  Department.findByIdAndUpdate(req.params.departmentId, { Status: 'deleted' }, (err, department) => {
+  Department.findByIdAndUpdate(req.params.departmentId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No department with id: ${req.params.departmentId} found on DB`, code: 'DEP105' });
     } else {
-      res.status(200).json(department.Status);
+      res.status(200).json();
     }
   });
 };

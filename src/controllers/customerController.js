@@ -8,16 +8,16 @@ const customerAddNew = (req, res) => {
   const customer = new Customer({
     ClientNumber: req.body.clientnumber,
     Name: req.body.name,
-    LastName: req.body.lastname,
+    LastName: req.body.lastName,
     Address: req.body.address,
     City: req.body.city,
     State: req.body.state,
     Zipcode: req.body.zipcode,
-    PhoneHome: req.body.phonehome,
-    MobilePhone: req.body.mobilephone,
-    WorkPhone: req.body.workphone,
+    PhoneHome: req.body.homePhone,
+    MobilePhone: req.body.mobilePhone,
+    WorkPhone: req.body.workPhone,
     Status: 'active',
-    BirthDate: req.body.birthdate,
+    BirthDate: req.body.birthDate,
     Sex: req.body.sex,
     PointsEarned: 0,
   });
@@ -70,17 +70,17 @@ const customerUpdateById = (req, res) => {
     if (err) {
       res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
     } else {
-      res.staus(200).json({ customer });
+      res.status(200).json({ customer });
     }
   });
 };
 
 const customerRemoveById = (req, res) => {
-  Customer.findByIdAndUpdate(req.params.customerId, { Status: 'deleted' }, (err, customer) => {
+  Customer.findByIdAndUpdate(req.params.customerId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No customer with id: ${req.params.customerId} found on DB`, code: 'CU105' });
     } else {
-      res.status(200).json(customer.Status);
+      res.status(200).json();
     }
   });
 };

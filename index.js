@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/blockchain2', {
   useUnifiedTopology: true,
 });
 mongoose.Promise = global.Promise;
+mongoose.set('useFindAndModify', false);
 
 const db = mongoose.connection;
 // eslint-disable-next-line no-console

@@ -48,17 +48,17 @@ const itemTypeUpdateById = (req, res) => {
     if (err) {
       res.status(404).json({ error: `No item type with id: ${req.params.itemTypeId} found on DB`, code: 'IT105' });
     } else {
-      res.staus(200).json({ itemType });
+      res.status(200).json({ itemType });
     }
   });
 };
 
 const itemTypeRemoveById = (req, res) => {
-  ItemType.findByIdAndUpdate(req.params.itemTypeId, { Status: 'deleted' }, (err, itemType) => {
+  ItemType.findByIdAndUpdate(req.params.itemTypeId, { Status: 'deleted' }, (err) => {
     if (err) {
       res.status(404).json({ error: `No item type with id: ${req.params.itemTypeId} found on DB`, code: 'IT105' });
     } else {
-      res.status(200).json(itemType.Status);
+      res.status(200).json();
     }
   });
 };

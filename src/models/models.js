@@ -60,7 +60,7 @@ const DepartmentSchema = new Schema({
 const DepartmentGroupSchema = new Schema({
   Name: String,
   Description: String,
-  Department: DepartmentSchema,
+  DepartmentId: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
@@ -96,8 +96,8 @@ const ItemSchema = new Schema({
   UnitPrice: Number,
   SpecialPrice: Number,
   OfferQuantity: Number,
-  ItemType: ItemTypeSchema,
-  Department: DepartmentSchema,
+  ItemTypeId: String,
+  DepartmentId: String,
   Weightable: Boolean,
   PriceRequired: Boolean,
   Inventory: Number,
@@ -120,7 +120,7 @@ const ItemSchema = new Schema({
 
 const PaymentSchema = new Schema({
   PaymentNumber: Number,
-  PaymentType: PaymentTypeSchema,
+  PaymentTypeId: String,
   Amount: Number,
   Status: {
     type: String,

@@ -947,7 +947,7 @@
             "name",
             "lastName",
             "mobilePhone",
-            "birthdate",
+            "birthDate",
             "sex"
          ],
          "properties":{
@@ -973,7 +973,7 @@
             "zipcode":{
                "type":"string"
             },
-            "phoneHome":{
+            "homePhone":{
                "type":"string"
             },
             "mobilePhone":{
@@ -984,10 +984,10 @@
                "enum":["active", "deleted"],
                "default": "active"
             },
-            "workHome":{
+            "workPhone":{
                "type":"string"
             },
-            "birthdate":{
+            "birthDate":{
                "type":"string"
             },
             "sex":{
@@ -1036,7 +1036,7 @@
             "description":{
                "type":"string"
             },
-            "department":{
+            "departmentId":{
                "type":"string"
             },
             "status":{
@@ -1065,19 +1065,19 @@
                "type":"string"
             },
             "unitPrice":{
-               "type":"float"
+               "type":"integer"
             },
             "specialPrice":{
-               "type":"float"
+               "type":"integer"
             },
             "offerQuantity":{
                "type":"integer"
             },
-            "itemType":{
-               "type":"itemTypeSchema"
+            "itemTypeId":{
+               "type":"string"
             },
-            "department":{
-               "type":"departmentSchema"
+            "departmentId":{
+               "type":"string"
             },
             "weightable":{
                "type":"boolean"
@@ -1101,12 +1101,12 @@
                "type":"boolean"
             },
             "itemCost":{
-               "type":"float"
+               "type":"integer"
             },
             "merchant":{
                "type":"string"
             },
-            "submerchabt":{
+            "submerchant":{
                "type":"string"
             },
             "barcode":{
@@ -1159,11 +1159,11 @@
                "type":"integer",
                "uniqueItems":true
             },
-            "paymentType":{
-               "type":"paymentTypeSchema"
+            "paymentTypeId":{
+               "type":"string"
             },
             "amount":{
-               "type":"float"
+               "type":"integer"
             },
             "status":{
                "type":"string",
