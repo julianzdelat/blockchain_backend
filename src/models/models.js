@@ -18,7 +18,7 @@ const CustomerSchema = new Schema({
   City: String,
   State: String,
   Zipcode: String,
-  PhoneHome: String,
+  HomePhone: String,
   MobilePhone: {
     type: String,
     require: true,
@@ -38,34 +38,6 @@ const CustomerSchema = new Schema({
     enum: ['M', 'F'],
     require: true,
   },
-  PointsEarned: {
-    type: Number,
-    require: true,
-  },
-});
-
-const DepartmentSchema = new Schema({
-  Name: {
-    type: String,
-    require: true,
-  },
-  Description: String,
-  Status: {
-    type: String,
-    enum: ['active', 'deleted'],
-    default: 'active',
-  },
-});
-
-const DepartmentGroupSchema = new Schema({
-  Name: String,
-  Description: String,
-  DepartmentId: String,
-  Status: {
-    type: String,
-    enum: ['active', 'deleted'],
-    default: 'active',
-  },
 });
 
 const PaymentTypeSchema = new Schema({
@@ -78,39 +50,14 @@ const PaymentTypeSchema = new Schema({
   },
 });
 
-const ItemTypeSchema = new Schema({
-  Name: {
-    type: String,
-    require: true,
-  },
-  IsAgeNeeded: Boolean,
-  Status: {
-    type: String,
-    enum: ['active', 'deleted'],
-    default: 'active',
-  },
-});
-
 const ItemSchema = new Schema({
-  ShortDescription: String,
+  Description: String,
   UnitPrice: Number,
-  SpecialPrice: Number,
-  OfferQuantity: Number,
+  Quantity: Number,
   ItemTypeId: String,
-  DepartmentId: String,
-  Weightable: Boolean,
-  PriceRequired: Boolean,
   Inventory: Number,
-  AllowFoodstamps: Boolean,
-  QuantityAllowed: Number,
-  QuantityRequired: Number,
-  AuthorizedSale: Boolean,
-  AllowPoints: Boolean,
-  ItemCost: Number,
-  Merchant: String,
-  Submerchant: String,
+  IsAgeNeeded: Boolean,
   Barcode: Number,
-  LongDescription: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
@@ -133,8 +80,6 @@ const OrderSchema = new Schema({
   OrderNumber: Number,
   Date,
   CustomerId: Number,
-  AwardPoints: Number,
-  UsedPoints: Number,
   Status: {
     type: String,
     enum: ['completed', 'pending', 'active', 'canceled'],
@@ -148,10 +93,7 @@ const OrderSchema = new Schema({
 
 module.exports = {
   CustomerSchema,
-  DepartmentSchema,
-  DepartmentGroupSchema,
   PaymentTypeSchema,
-  ItemTypeSchema,
   ItemSchema,
   PaymentSchema,
   OrderSchema,
