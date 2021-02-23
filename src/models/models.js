@@ -78,7 +78,7 @@ const PaymentSchema = new Schema({
 
 const OrderSchema = new Schema({
   OrderNumber: Number,
-  Date,
+  Date: String,
   CustomerId: Number,
   Status: {
     type: String,
