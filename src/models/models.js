@@ -51,10 +51,10 @@ const PaymentTypeSchema = new Schema({
 });
 
 const ItemSchema = new Schema({
+  Name: String,
   Description: String,
   UnitPrice: Number,
   Quantity: Number,
-  ItemTypeId: String,
   Inventory: Number,
   IsAgeNeeded: Boolean,
   Barcode: Number,
