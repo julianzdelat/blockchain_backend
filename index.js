@@ -5,6 +5,8 @@ const swaggerUi = require('swagger-ui-express');
 
 const swaggerDocument = require('./src/api-docs/swagger');
 const Routes = require('./src/routes/Routes');
+const Blockchain = require('./src/blockchain/blockchain');
+const Block = require('./src/blockchain/block');
 
 mongoose.connect('mongodb://localhost/blockchain2', {
   useNewUrlParser: true,
@@ -16,6 +18,16 @@ mongoose.set('useFindAndModify', false);
 const db = mongoose.connection;
 // eslint-disable-next-line no-console
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+const blockchain = new Blockchain();
+/*
+for(let i=0; i<5; i++) {
+    const newData = 'krunal'+i;
+    blockchain.addBlock({data: newData});
+}
+*/
+// To see the blockchain
+console.log(blockchain);
 
 const app = express();
 const PORT = process.env.PORT || 8000;
