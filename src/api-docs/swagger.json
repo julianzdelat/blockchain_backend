@@ -17,20 +17,8 @@
          "description":"API for Customers in the system"
       },
       {
-         "name":"Department",
-         "description":"API for Department in the system"
-      },
-      {
-         "name":"DepartmentGroup",
-         "description":"API for DepartmentGroup in the system"
-      },
-      {
          "name":"Item",
          "description":"API for Item in the system"
-      },
-      {
-         "name":"ItemType",
-         "description":"API for ItemType in the system"
       },
       {
          "name":"Payment",
@@ -178,133 +166,6 @@
             }
          }
       },
-      "/deparment/{departmentId}":{
-         "get":{
-            "tags":[
-               "Department"
-            ],
-            "summary":"Get department by Id",
-            "parameters":[
-               {
-                  "name":"departmentId",
-                  "in":"path",
-                  "description":"ID of department to return",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               }
-            }
-         },
-         "delete":{
-            "tags":[
-               "Department"
-            ],
-            "summary":"Delete department by Id",
-            "parameters":[
-               {
-                  "name":"departmentId",
-                  "in":"path",
-                  "description":"ID of department to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               }
-            }
-         },
-         "put":{
-            "tags":[
-               "Department"
-            ],
-            "summary":"Update a department",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All modified data from the department",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               },
-               {
-                  "name":"departmentId",
-                  "in":"path",
-                  "description":"ID of department to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               }
-            }
-         }
-      },
-      "/departments":{
-         "get":{
-            "tags":[
-               "Department"
-            ],
-            "summary":"Get all department in system",
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "type": "array",
-                     "items": {
-                        "$ref": "#/definitions/Department"
-                     }
-                  }
-               }
-            }
-         },
-         "post":{
-            "tags":[
-               "Department"
-            ],
-            "summary":"Create department",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All required data to create a new department",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               }
-            ],
-            "responses":{
-               "201":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/Department"
-                  }
-               }
-            }
-         }
-      }, 
       "/item/{itemId}":{
          "get":{
             "tags":[
@@ -388,133 +249,6 @@
             }
          }
       },
-      "/deparmentGroup/{departmentGroupId}":{
-         "get":{
-            "tags":[
-               "DepartmentGroup"
-            ],
-            "summary":"Get departmentGroup by Id",
-            "parameters":[
-               {
-                  "name":"departmentGroupId",
-                  "in":"path",
-                  "description":"ID of departmentGroup to return",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               }
-            }
-         },
-         "delete":{
-            "tags":[
-               "DepartmentGroup"
-            ],
-            "summary":"Delete departmentGroup by Id",
-            "parameters":[
-               {
-                  "name":"departmentGroupId",
-                  "in":"path",
-                  "description":"ID of departmentGroup to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               }
-            }
-         },
-         "put":{
-            "tags":[
-               "DepartmentGroup"
-            ],
-            "summary":"Update a departmentGroup",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All modified data from the departmentGroup",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               },
-               {
-                  "name":"departmentGroupId",
-                  "in":"path",
-                  "description":"ID of departmentGroup to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               }
-            }
-         }
-      },
-      "/departmentGroups":{
-         "get":{
-            "tags":[
-               "DepartmentGroup"
-            ],
-            "summary":"Get all departmentGroup in system",
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "type": "array",
-                     "items": {
-                        "$ref": "#/definitions/DepartmentGroup"
-                     }
-                  }
-               }
-            }
-         },
-         "post":{
-            "tags":[
-               "DepartmentGroup"
-            ],
-            "summary":"Create departmentGroup",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All required data to create a new departmentGroup",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               }
-            ],
-            "responses":{
-               "201":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/DepartmentGroup"
-                  }
-               }
-            }
-         }
-      },
       "/items":{
          "get":{
             "tags":[
@@ -554,133 +288,6 @@
                   "description":"OK",
                   "schema":{
                      "$ref":"#/definitions/Item"
-                  }
-               }
-            }
-         }
-      },
-      "/itemType/{itemTypeId}":{
-         "get":{
-            "tags":[
-               "ItemType"
-            ],
-            "summary":"Get item type by Id",
-            "parameters":[
-               {
-                  "name":"itemTypeId",
-                  "in":"path",
-                  "description":"ID of item type to return",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
-                  }
-               }
-            }
-         },
-         "delete":{
-            "tags":[
-               "ItemType"
-            ],
-            "summary":"Delete item type by Id",
-            "parameters":[
-               {
-                  "name":"itemTypeId",
-                  "in":"path",
-                  "description":"ID of item type to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
-                  }
-               }
-            }
-         },
-         "put":{
-            "tags":[
-               "ItemType"
-            ],
-            "summary":"Update a item type",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All modified data from the item type",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
-                  }
-               },
-               {
-                  "name":"itemTypeId",
-                  "in":"path",
-                  "description":"ID of item type to delete",
-                  "required":true,
-                  "type":"integer",
-                  "format":"int64"
-               }
-            ],
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
-                  }
-               }
-            }
-         }
-      },
-      "/itemTypes":{
-         "get":{
-            "tags":[
-               "ItemType"
-            ],
-            "summary":"Get all item type in system",
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "type": "array",
-                     "items": {
-                        "$ref": "#/definitions/ItemType"
-                     }
-                  }
-               }
-            }
-         },
-         "post":{
-            "tags":[
-               "ItemType"
-            ],
-            "summary":"Create item type",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All required data to create a new item type",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
-                  }
-               }
-            ],
-            "responses":{
-               "201":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/ItemType"
                   }
                }
             }
@@ -769,50 +376,6 @@
             }
          }
       },
-      "/payments":{
-         "get":{
-            "tags":[
-               "Payment"
-            ],
-            "summary":"Get all payments in system",
-            "responses":{
-               "200":{
-                  "description":"OK",
-                  "schema":{
-                     "type": "array",
-                     "items": {
-                        "$ref": "#/definitions/Payment"
-                     }
-                  }
-               }
-            }
-         },
-         "post":{
-            "tags":[
-               "Payment"
-            ],
-            "summary":"Create payment",
-            "parameters":[
-               {
-                  "in":"body",
-                  "name":"body",
-                  "description":"All required data to create a new payment",
-                  "required":true,
-                  "schema":{
-                     "$ref":"#/definitions/Payment"
-                  }
-               }
-            ],
-            "responses":{
-               "201":{
-                  "description":"OK",
-                  "schema":{
-                     "$ref":"#/definitions/Payment"
-                  }
-               }
-            }
-         }
-      },
       "/paymentType/{paymentTypeId}":{
          "get":{
             "tags":[
@@ -891,6 +454,50 @@
                   "description":"OK",
                   "schema":{
                      "$ref":"#/definitions/PaymentType"
+                  }
+               }
+            }
+         }
+      },
+      "/payments":{
+         "get":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Get all payments in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/Payment"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Payment"
+            ],
+            "summary":"Create payment",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new payment",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Payment"
                   }
                }
             }
@@ -999,53 +606,6 @@
             }
          }
       },
-      "Department":{
-         "required":[
-            "name"
-         ],
-         "properties":{
-            "_id":{
-               "type":"string",
-               "uniqueItems":true
-            },
-            "name":{
-               "type":"string"
-            },
-            "description":{
-               "type":"string"
-            },
-            "status":{
-               "type":"string",
-               "enum":["active", "deleted"],
-               "default": "active"
-            }
-         }
-      },
-      "DepartmentGroup":{
-         "required":[
-            "name"
-         ],
-         "properties":{
-            "_id":{
-               "type":"string",
-               "uniqueItems":true
-            },
-            "name":{
-               "type":"string"
-            },
-            "description":{
-               "type":"string"
-            },
-            "departmentId":{
-               "type":"string"
-            },
-            "status":{
-               "type":"string",
-               "enum":["active", "deleted"],
-               "default": "active"
-            }
-         }
-      },
       "Item":{
          "required":[
             "shortDescription",
@@ -1121,29 +681,6 @@
                "default": "active"
             }
             
-         }
-      },
-      "ItemType":{
-         "required":[
-            "name",
-            "isAgeNeeded"
-         ],
-         "properties":{
-            "_id":{
-               "type":"string",
-               "uniqueItems":true
-            },
-            "name":{
-               "type":"string"
-            },
-            "isAgeNeeded":{
-               "type":"boolean"
-            },
-            "status":{
-               "type":"string",
-               "enum":["active", "deleted"],
-               "default": "active"
-            }
          }
       },
       "Payment":{
