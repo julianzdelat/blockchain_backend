@@ -17,16 +17,16 @@
          "description":"API for Customers in the system"
       },
       {
-         "name":"Item",
-         "description":"API for Item in the system"
+         "name":"Items",
+         "description":"API for Items in the system"
       },
       {
-         "name":"Payment",
-         "description":"API for Payment in the system"
+         "name":"Payments",
+         "description":"API for Payments in the system"
       },
       {
          "name":"PaymentType",
-         "description":"API for PaymentType in the system"
+         "description":"API for PaymentsType in the system"
       }
    ],
    "schemes":[
@@ -555,7 +555,8 @@
             "lastName",
             "mobilePhone",
             "birthDate",
-            "sex"
+            "sex",
+            "status"
          ],
          "properties":{
             "_id":{
@@ -600,9 +601,6 @@
             "sex":{
                "type":"string",
                "enum": ["M", "F"]
-            },
-            "pointsEarned":{
-               "type":"integer"
             }
          }
       },

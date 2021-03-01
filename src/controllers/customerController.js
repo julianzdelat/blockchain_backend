@@ -13,13 +13,12 @@ const customerAddNew = (req, res) => {
     City: req.body.city,
     State: req.body.state,
     Zipcode: req.body.zipcode,
-    PhoneHome: req.body.homePhone,
+    HomePhone: req.body.homePhone,
     MobilePhone: req.body.mobilePhone,
     WorkPhone: req.body.workPhone,
     Status: 'active',
     BirthDate: req.body.birthDate,
     Sex: req.body.sex,
-    PointsEarned: 0,
   });
   customer
     .save()
