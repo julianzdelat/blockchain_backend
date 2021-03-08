@@ -23,7 +23,6 @@ const CustomerSchema = new Schema({
     type: String,
     require: true,
   },
-  WorkPhone: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
@@ -41,34 +40,54 @@ const CustomerSchema = new Schema({
 });
 
 const PaymentTypeSchema = new Schema({
-  Name: String,
+  Name: {
+    type: String,
+    require: true,
+  },
   Description: String,
   Status: {
     type: String,
     enum: ['active', 'deleted'],
     default: 'active',
+    require: true,
   },
 });
 
 const ItemSchema = new Schema({
   Name: String,
   Description: String,
-  UnitPrice: Number,
+  UnitPrice: {
+    type: Number,
+    require: true,
+  },
   Quantity: Number,
   Inventory: Number,
-  IsAgeNeeded: Boolean,
-  Barcode: Number,
+  IsAgeNeeded: {
+    type: Boolean,
+    require: true,
+  },
+  Barcode: {
+    type: Number,
+    require: true,
+  },
   Status: {
     type: String,
     enum: ['active', 'deleted'],
     default: 'active',
+    require: true,
   },
 });
 
 const PaymentSchema = new Schema({
   PaymentNumber: Number,
-  PaymentTypeId: String,
-  Amount: Number,
+  PaymentTypeId: {
+    type: String,
+    requiere: true,
+  },
+  Amount: {
+    type: Number,
+    require: true,
+  },
   Status: {
     type: String,
     enum: ['completed', 'pending', 'canceled'],
