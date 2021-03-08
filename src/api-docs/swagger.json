@@ -25,8 +25,8 @@
          "description":"API for Payments in the system"
       },
       {
-         "name":"PaymentType",
-         "description":"API for PaymentsType in the system"
+         "name":"PaymentTypes",
+         "description":"API for PaymentTypes in the system"
       }
    ],
    "schemes":[
@@ -169,7 +169,7 @@
       "/item/{itemId}":{
          "get":{
             "tags":[
-               "Item"
+               "Items"
             ],
             "summary":"Get item by Id",
             "parameters":[
@@ -193,7 +193,7 @@
          },
          "delete":{
             "tags":[
-               "Item"
+               "Items"
             ],
             "summary":"Delete item by Id",
             "parameters":[
@@ -217,7 +217,7 @@
          },
          "put":{
             "tags":[
-               "Item"
+               "Items"
             ],
             "summary":"Update a item",
             "parameters":[
@@ -252,7 +252,7 @@
       "/items":{
          "get":{
             "tags":[
-               "Item"
+               "Items"
             ],
             "summary":"Get all item in system",
             "responses":{
@@ -269,7 +269,7 @@
          },
          "post":{
             "tags":[
-               "Item"
+               "Items"
             ],
             "summary":"Create item",
             "parameters":[
@@ -296,7 +296,7 @@
       "/payment/{paymentId}":{
          "get":{
             "tags":[
-               "Payment"
+               "Payments"
             ],
             "summary":"Get payment by Id",
             "parameters":[
@@ -320,7 +320,7 @@
          },
          "delete":{
             "tags":[
-               "Payment"
+               "Payments"
             ],
             "summary":"Delete payment by Id",
             "parameters":[
@@ -344,7 +344,7 @@
          },
          "put":{
             "tags":[
-               "Payment"
+               "Payments"
             ],
             "summary":"Update a payment",
             "parameters":[
@@ -379,7 +379,7 @@
       "/paymentType/{paymentTypeId}":{
          "get":{
             "tags":[
-               "PaymentType"
+               "PaymentTypes"
             ],
             "summary":"Get payment type by Id",
             "parameters":[
@@ -403,7 +403,7 @@
          },
          "delete":{
             "tags":[
-               "PaymentType"
+               "PaymentTypes"
             ],
             "summary":"Delete payment type by Id",
             "parameters":[
@@ -427,7 +427,7 @@
          },
          "put":{
             "tags":[
-               "PaymentType"
+               "PaymentTypes"
             ],
             "summary":"Update a payment type",
             "parameters":[
@@ -462,7 +462,7 @@
       "/payments":{
          "get":{
             "tags":[
-               "Payment"
+               "Payments"
             ],
             "summary":"Get all payments in system",
             "responses":{
@@ -479,7 +479,7 @@
          },
          "post":{
             "tags":[
-               "Payment"
+               "Payments"
             ],
             "summary":"Create payment",
             "parameters":[
@@ -506,7 +506,7 @@
       "/paymentTypes":{
          "get":{
             "tags":[
-               "PaymentType"
+               "PaymentTypes"
             ],
             "summary":"Get all payemnt type in system",
             "responses":{
@@ -523,7 +523,7 @@
          },
          "post":{
             "tags":[
-               "PaymentType"
+               "PaymentTypes"
             ],
             "summary":"Create payment type",
             "parameters":[
@@ -549,8 +549,9 @@
       }
    },
    "definitions":{
-      "Customer":{
+      "Customers":{
          "required":[
+            "clientNumber",
             "name",
             "lastName",
             "mobilePhone",
@@ -592,9 +593,6 @@
                "enum":["active", "deleted"],
                "default": "active"
             },
-            "workPhone":{
-               "type":"string"
-            },
             "birthDate":{
                "type":"string"
             },
@@ -604,86 +602,51 @@
             }
          }
       },
-      "Item":{
+      "Items":{
          "required":[
-            "shortDescription",
             "unitPrice",
-            "itemType",
-            "deparment",
             "barcode",
-            "itemCost",
-            "authorizedSale"
+            "isAgeNeeded",
+            "status"
          ],
          "properties":{
             "_id":{
                "type":"string",
                "uniqueItems":true
             },
-            "shortDescription":{
+            "name":{
+               "type":"string"
+            },
+            "description":{
                "type":"string"
             },
             "unitPrice":{
                "type":"integer"
             },
-            "specialPrice":{
+            "quantity":{
                "type":"integer"
-            },
-            "offerQuantity":{
-               "type":"integer"
-            },
-            "itemTypeId":{
-               "type":"string"
-            },
-            "departmentId":{
-               "type":"string"
-            },
-            "weightable":{
-               "type":"boolean"
-            },
-            "priceRequired":{
-               "type":"boolean"
             },
             "inventory":{
                "type":"integer"
             },
-            "allowFoodstamps":{
+            "isAgeNeeded":{
                "type":"boolean"
-            },
-            "quantityAllowed":{
-               "type":"integer"
-            },
-            "authorizedSale":{
-               "type":"boolean"
-            },
-            "allowPoints":{
-               "type":"boolean"
-            },
-            "itemCost":{
-               "type":"integer"
-            },
-            "merchant":{
-               "type":"string"
-            },
-            "submerchant":{
-               "type":"string"
             },
             "barcode":{
                "type":"integer"
-            },
-            "longDescription":{
-               "type":"string"
             },
             "status":{
                "type":"string",
                "enum":["active", "deleted"],
                "default": "active"
             }
-            
          }
       },
-      "Payment":{
+      "Payments":{
          "required":[
-
+            "paymentTypeId",
+            "amount",
+            "status"
          ],
          "properties":{
             "_id":{
@@ -707,9 +670,10 @@
             }
          }
       },
-      "PaymentType":{
+      "PaymentTypes":{
          "required":[
-            "name"
+            "name",
+            "status"
          ],
          "properties":{
             "_id":{
