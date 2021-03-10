@@ -8,6 +8,7 @@ const paymentTypeAddNew = (req, res) => {
   const paymentType = new PaymentType({
     Name: req.body.name,
     Description: req.body.description,
+    Status: req.body.status,
   });
   paymentType
     .save()

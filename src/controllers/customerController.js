@@ -5,29 +5,33 @@ const Schema = require('../models/models.js');
 const Customer = mongoose.model('customer', Schema.CustomerSchema);
 
 const customerAddNew = (req, res) => {
-  const customer = new Customer({
-    ClientNumber: req.body.clientnumber,
-    Name: req.body.name,
-    LastName: req.body.lastName,
-    Address: req.body.address,
-    City: req.body.city,
-    State: req.body.state,
-    Zipcode: req.body.zipcode,
-    HomePhone: req.body.homePhone,
-    MobilePhone: req.body.mobilePhone,
-    WorkPhone: req.body.workPhone,
-    Status: 'active',
-    BirthDate: req.body.birthDate,
-    Sex: req.body.sex,
-  });
-  customer
-    .save()
-    .then((result) => {
-      res.status(201).json({ createdCustomer: result });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err });
+  const result = req.body.filter(customerProps => customerProps != null);
+  console.log(result);
+    const customer = new Customer({
+      ClientNumber: req.body.clientNumber,
+      Name: req.body.name,
+      LastName: req.body.lastName,
+      Address: req.body.address,
+      City: req.body.city,
+      State: req.body.state,
+      Zipcode: req.body.zipcode,
+      HomePhone: req.body.homePhone,
+      MobilePhone: req.body.mobilePhone,
+      Status: 'active',
+      BirthDate: req.body.birthDate,
+      Sex: req.body.sex,
     });
+    console.log(req.body);
+    customer
+      .save()
+      .then((result) => {
+        res.status(201).json({ createdCustomer: result });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  
+  
 };
 
 const customerGetAll = (req, res) => {
@@ -61,7 +65,6 @@ const customerUpdateById = (req, res) => {
     Zipcode: req.body.zipcode,
     PhoneHome: req.body.phonehome,
     MobilePhone: req.body.mobilephone,
-    WorkPhone: req.body.workphone,
     BirthDate: req.body.birthdate,
     Sex: req.body.sex,
   };

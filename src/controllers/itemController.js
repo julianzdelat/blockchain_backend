@@ -6,25 +6,13 @@ const Item = mongoose.model('item', Schema.ItemSchema);
 
 const itemAddNew = (req, res) => {
   const item = new Item({
-    ShortDescription: req.body.shortDescription,
+    Name: req.body.name,
+    Description: req.body.description,
     UnitPrice: req.body.unitPrice,
-    SpecialPrice: req.body.specialPrice,
-    OfferQuantity: req.body.offerQuantity,
-    ItemTypeId: req.body.itemTypeId,
-    DepartmentId: req.body.departmentId,
-    Wieghtable: req.body.weightable,
-    PriceRequired: req.body.priceRequired,
+    Quantity: req.body.quantity,
     Inventory: req.body.inventory,
-    AllowFoodStamps: req.body.allowFoodstamps,
-    QuantityAllowed: req.body.quantityAllowed,
-    QuantityRequired: req.body.quantityrequired,
-    AuthorizedSale: req.body.authorizedSale,
-    AllowPoints: req.body.allowPoints,
-    ItemCost: req.body.itemCost,
-    Merchant: req.body.merchant,
-    Submerchant: req.body.submerchant,
+    IsAgeNeeded: req.body.isAgeNeeded,
     Barcode: req.body.barcode,
-    LongDescription: req.body.longDescription,
     Status: 'active',
   });
   item
@@ -59,25 +47,14 @@ const itemGetById = (req, res) => {
 
 const itemUpdateById = (req, res) => {
   const updatedItem = {
-    ShortDescription: req.body.shortdescription,
-    UnitPrice: req.body.unitprice,
-    SpecialPrice: req.body.lastname,
-    OfferQuantity: req.body.offerquantity,
-    ItemTypeId: req.body.itemtypeId,
-    DepartmentId: req.body.departmentId,
-    Wieghtable: req.body.weightable,
-    PriceRequired: req.body.pricerequired,
+    Name: req.body.name,
+    Description: req.body.description,
+    UnitPrice: req.body.unitPrice,
+    Quantity: req.body.quantity,
     Inventory: req.body.inventory,
-    AllowFoodStamps: req.body.allowfoodstamps,
-    QuantityAllowed: req.body.quantityallowed,
-    QuantityRequired: req.body.quantityrequired,
-    AuthorizedSale: req.body.authorizedsale,
-    AllowPoints: req.body.allowpoints,
-    ItemCost: req.body.itemcost,
-    Merchant: req.body.merchant,
-    Submerchant: req.body.submerchant,
+    IsAgeNeeded: req.body.isAgeNeeded,
     Barcode: req.body.barcode,
-    LongDescription: req.body.longdescription,
+    Status: req.body.status,
   };
   Item.findByIdAndUpdate(req.params.itemId, { updatedItem }, (err, item) => {
     if (err) {
