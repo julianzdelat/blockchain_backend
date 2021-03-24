@@ -21,6 +21,10 @@
          "description":"API for Items in the system"
       },
       {
+         "name":"Orders",
+         "description":"API for Orders in the system"
+      },
+      {
          "name":"Payments",
          "description":"API for Payments in the system"
       },
@@ -288,6 +292,133 @@
                   "description":"OK",
                   "schema":{
                      "$ref":"#/definitions/Item"
+                  }
+               }
+            }
+         }
+      },
+      "/order/{orderId}":{
+         "get":{
+            "tags":[
+               "Orders"
+            ],
+            "summary":"Get order by Id",
+            "parameters":[
+               {
+                  "name":"orderId",
+                  "in":"path",
+                  "description":"ID of order to return",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Order"
+                  }
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Orders"
+            ],
+            "summary":"Delete order by Id",
+            "parameters":[
+               {
+                  "name":"orderId",
+                  "in":"path",
+                  "description":"ID of order to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Order"
+                  }
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Orders"
+            ],
+            "summary":"Update a order",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All modified data from the order",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Order"
+                  }
+               },
+               {
+                  "name":"orderId",
+                  "in":"path",
+                  "description":"ID of order to delete",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Order"
+                  }
+               }
+            }
+         }
+      },
+      "/orders":{
+         "get":{
+            "tags":[
+               "Orders"
+            ],
+            "summary":"Get all order in system",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/definitions/Order"
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Orders"
+            ],
+            "summary":"Create order",
+            "parameters":[
+               {
+                  "in":"body",
+                  "name":"body",
+                  "description":"All required data to create a new order",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/Order"
+                  }
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/Order"
                   }
                }
             }
@@ -639,6 +770,48 @@
                "type":"string",
                "enum":["active", "deleted"],
                "default": "active"
+            }
+         }
+      },
+      "Orders":{
+         "required":[
+            "OrderNumber",
+            "Date",
+            "CustomerId",
+            "Status",
+            "Items",
+            "Payments"
+         ],
+         "properties":{
+            "_id":{
+               "type":"string",
+               "uniqueItems":true
+            },
+            "OrderNumber":{
+               "type":"integer"
+            },
+            "Date":{
+               "type":"string"
+            },
+            "CustomerId":{
+               "type":"integer"
+            },
+            "status":{
+               "type":"string",
+               "enum":["active", "deleted"],
+               "default": "active"
+            },
+            "Items":{
+               "type":"ItemSchema"
+            },
+            "Payments":{
+               "type":"PaymentSchema"
+            },
+            "TotalItems":{
+               "type":"integer"
+            },
+            "TotalPayments":{
+               "type":"integer"
             }
          }
       },

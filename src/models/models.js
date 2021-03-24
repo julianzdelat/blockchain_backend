@@ -96,16 +96,31 @@ const PaymentSchema = new Schema({
 });
 
 const OrderSchema = new Schema({
-  OrderNumber: Number,
-  Date: String,
-  CustomerId: Number,
+  OrderNumber: {
+    type: Number,
+    require: true,
+  },
+  Date: {
+    type: String,
+    require: true,
+  },
+  CustomerId: {
+    type: Number,
+    require: true,
+  },
   Status: {
     type: String,
     enum: ['completed', 'pending', 'active', 'canceled'],
     default: 'pending',
   },
-  Items: [ItemSchema],
-  Payments: [PaymentSchema],
+  Items: {
+    type: [ItemSchema],
+    require: true,
+  },
+  Payments: {
+    type: [PaymentSchema],
+    require: true,
+  },
   TotalItems: Number,
   TotalPayments: Number,
 });
