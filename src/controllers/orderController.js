@@ -65,7 +65,7 @@ const orderUpdateById = (req, res) => {
     });
 };
 
-const orderRemoveById = (res, res) => {
+const orderRemoveById = (req, res) => {
     Order.findByIdAndUpdate(req.params.orderId, { Status: 'deleted' }, (err) => {
         if (err) {
             res.status(404).json({ error: `No order with id: ${req.params.orderId} founds on DB`, code: 'IT105'});
